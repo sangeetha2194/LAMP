@@ -1,6 +1,6 @@
 ---
 # install LAMP on UBUNTU 20.4
-- name: installing LAMP on Ubuntu 20.4
+- name: installing LAMP on Ubuntu 
   hosts: all
   become: true
  
@@ -14,16 +14,12 @@
 
   - name: install apache2
     apt:
-      name: install apache2
-      state: latest
-      notify: restartapache2
-      handlers:
-      - name: restartapache2
-        state: restart
-
+      name: apache2
+      state: present
+      
   - name: install PHP
     apt: 
-      name: php libapache2-mod-php
+      name: php7.4 
       state: latest
 
   - name: insert info.php file inside var
