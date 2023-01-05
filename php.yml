@@ -3,12 +3,14 @@
 - name: installing LAMP on Ubuntu 20.4
   hosts: all
   become: true
+  gathering_facts: no
 
   tasks:
-  - name: update the Ubuntu
+  - name: update apt-get repo and cache
     apt:
-      name: update cache
       update_cache: yes
+      force_apt_get: yes
+      cache_valid_time: 3600
 
   - name: install apache2
     apt:
